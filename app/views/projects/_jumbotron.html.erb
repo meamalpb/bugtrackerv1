@@ -1,0 +1,17 @@
+<div class="jumbotron">
+  <h1 class="display-4"><%= project.name %></h1>
+  <p class="lead"><%= project.Description %></p>
+  <hr class="my-4">
+  <div class="d-flex justify-content-between">
+    <div class="d-flex">
+      <span class="lead">
+      <%= link_to "Edit this project", edit_project_path(@project) ,class: "btn btn-primary btn-lg"%>
+      </span>
+    </div>
+    <div>
+      <span class="text-end">
+        <%= link_to "Back to projects", projects_path, class: "btn btn-secondary btn-lg" %>
+      </span>
+    </div>
+  </div>
+</div>

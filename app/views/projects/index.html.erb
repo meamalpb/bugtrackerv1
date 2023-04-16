@@ -1,14 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Projects</h1>
+<h1 >Projects</h1>
+<%= link_to "New project", new_project_path, class: "badge bg-secondary text-decoration-none" %>
 
+<br><br>
 <div id="projects">
   <% @projects.each do |project| %>
-    <%= render project %>
-    <p>
-      <%= link_to "Show this project", project %>
-    </p>
+    <%= render partial: 'acc', locals: { project: project } %>
   <% end %>
 </div>
-
-<%= link_to "New project", new_project_path %>
