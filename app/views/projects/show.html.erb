@@ -4,7 +4,8 @@
 <div>
   <%= button_to "Destroy this project", @project, method: :delete %>
 </div>
-
+<br>
+<%= link_to 'new issue', new_project_issue_path(@project),class: "btn btn-primary btn-sm" %>
 <h1>issues</h1>
 <% @project.issues.each do |issue| %>
   <p>
