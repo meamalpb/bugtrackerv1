@@ -4,3 +4,16 @@
 <div>
   <%= button_to "Destroy this project", @project, method: :delete %>
 </div>
+
+<h1>issues</h1>
+<% @project.issues.each do |issue| %>
+  <p>
+    <strong>Title:</strong>
+    <%= issue.Title %>
+  </p>
+
+  <p>
+    <strong>Severity:</strong>
+    <%= issue.Severity %>
+  </p>
+<% end %>
