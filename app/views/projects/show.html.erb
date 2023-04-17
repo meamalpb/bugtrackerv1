@@ -6,15 +6,17 @@
 </div>
 <br>
 <%= link_to 'new issue', new_project_issue_path(@project),class: "btn btn-primary btn-sm" %>
-<h1>issues</h1>
-<% @project.issues.each do |issue| %>
-  <p>
-    <strong>Title:</strong>
-    <%= issue.Title %>
-  </p>
+<h1 class="text-center">Issues</h1>
+<div class="list-group">
+  <% @project.issues.each do |issue| %>
+    <% case issue.Severity %>
+      <% when 'low' %>
+        <a href="#" class="list-group-item list-group-item-warning"><%= issue.Title %></a>
+      <% when 'medium' %>
+        <a href="#" class="list-group-item list-group-item-orange"><%= issue.Title %></a>
+      <% when 'high' %>
+        <a href="#" class="list-group-item list-group-item-danger"><%= issue.Title %></a>
+    <% end %>
+  <% end %>
+</div>
 
-  <p>
-    <strong>Severity:</strong>
-    <%= issue.Severity %>
-  </p>
-<% end %>
