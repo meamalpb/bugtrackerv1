@@ -12,7 +12,10 @@
         <%= link_to 'Login', '#', class:"nav-link" %>
       </li>
       <li class="nav-item active">
-        <%= link_to 'Signup', '#', class:"nav-link" %>
+        <%= link_to 'Signup', new_user_registration_path, class:"nav-link" %>
+      </li>
+       <li class="nav-item active">
+      <%= link_to "Signout", destroy_user_session_path ,'data-turbo-method': :delete, class:"nav-link"  %>
       </li>
       <li class="nav-item active">
         <%= link_to 'Projects', projects_path, class:"nav-link" %>
