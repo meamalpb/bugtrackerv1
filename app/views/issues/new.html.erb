@@ -10,5 +10,8 @@
   <%= f.label :body %>
   <%= f.text_area :body %>
 
+  <%= f.label :assigned_id %>
+  <%= f.collection_select :assigned_id, @project.users, :id, :name %>
+
   <%= f.submit %>
 <% end %>
