@@ -9,6 +9,13 @@ class IssuesController < ApplicationController
     redirect_to project_path(@project)
   end
 
+  def show
+    p "Working?"
+    p params[:id]
+    @issue = Issue.find(params[:id])
+
+  end
+
   private
     def issue_params
       params.require(:issue).permit(:Title, :Severity,:body,:assignee_id,:assigned_id).tap do |whitelisted|

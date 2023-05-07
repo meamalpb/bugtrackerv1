@@ -11,12 +11,13 @@
   <% @project.issues.each do |issue| %>
     <% case issue.Severity %>
       <% when 'low' %>
-        <a href="#" class="list-group-item list-group-item-warning"><%= issue.Title %></a>
+        <%= link_to issue.Title , project_issue_path(project_id: @project.id, id: issue.id), class: "list-group-item list-group-item-warning" %>
       <% when 'medium' %>
-        <a href="#" class="list-group-item list-group-item-orange"><%= issue.Title %></a>
+        <%= link_to issue.Title , project_issue_path(project_id: @project.id, id: issue.id), class: "list-group-item list-group-item-orange" %>
       <% when 'high' %>
-        <a href="#" class="list-group-item list-group-item-danger"><%= issue.Title %></a>
+        <%= link_to issue.Title , project_issue_path(project_id: @project.id, id: issue.id), class: "list-group-item list-group-item-danger" %>
     <% end %>
   <% end %>
 </div>
 
+<%= render partial: 'modal' %>
