@@ -1,0 +1,8 @@
+
+<h1 class="text-center">Projects</h1>
+
+<div id="projects" class="list-group" >
+  <% @projects.each do |project| %>
+    <%= link_to project.name , '/projectusers/'+ project.id.to_s , class: "list-group-item list-group-item-warning" %>
+  <% end %>
+</div>

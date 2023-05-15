@@ -1,0 +1,7 @@
+hiya
+<%= @project.name %>
+<div id="projects" class="list-group" >
+  <% @users.each do |user| %>
+    <%= link_to user.name , "#" , class: "list-group-item list-group-item-warning" %>
+  <% end %>
+</div>

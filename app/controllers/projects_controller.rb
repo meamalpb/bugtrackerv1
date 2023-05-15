@@ -49,6 +49,16 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def project_user
+    @projects = Project.all
+  end
+
+  def project_user_show
+    @project = Project.find(params[:id])
+    @users = @project.users
+  end
+
+
   # DELETE /projects/1 or /projects/1.json
   def destroy
     @project.destroy
@@ -71,5 +81,6 @@ class ProjectsController < ApplicationController
         whitelisted[:project_lead_id] = current_user.id
       end
     end
+
 
 end

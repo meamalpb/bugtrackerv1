@@ -8,4 +8,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+  get "/projectusers", to: "projects#project_user"
+  get "/projectusers/:id" , to: "projects#project_user_show"
+
 end
