@@ -56,6 +56,7 @@ class ProjectsController < ApplicationController
   def project_user_show
     @project = Project.find(params[:id])
     @users = @project.users
+    @allusers = User.where.not(id: @users.pluck(:id))
   end
 
 

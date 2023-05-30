@@ -10,6 +10,7 @@
         <div class="accordion-body"><%= project.Description %>
           <br>
           <%= link_to "Show this project", project, class: "btn btn-primary btn-sm" %>
+          <%= link_to "Users on project",project_user_show_path(project) ,  class: "btn btn-primary btn-sm" %>
         </div>
       </div>
     </div>

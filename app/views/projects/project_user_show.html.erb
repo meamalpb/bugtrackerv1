@@ -1,7 +1,19 @@
-hiya
-<%= @project.name %>
-<div id="projects" class="list-group" >
+
+
+<h1 class="text-center"><%= @project.name.capitalize %></h1>
+
+<h3 class="text-center">Users on project</h3>
+<div id="projects" class="list-group my-4" >
   <% @users.each do |user| %>
-    <%= link_to user.name , "#" , class: "list-group-item list-group-item-warning" %>
+    <%= link_to user.name , project_delete_user_path(@project , user_id: user.id) , class: "list-group-item list-group-item-warning" %>
   <% end %>
 </div>
+
+<h3 class="text-center">Users not on project</h3>
+
+<div id="projects" class="list-group my-4" >
+  <% @allusers.each do |user| %>
+    <%= link_to user.name , project_add_user_path(@project , user_id: user.id) , class: "list-group-item list-group-item-danger" %>
+  <% end %>
+</div>
+
