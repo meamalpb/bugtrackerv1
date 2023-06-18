@@ -1,6 +1,6 @@
-<%= form_with(model: project) do |form| %>
+<%= form_with(model: project, class: 'form-group') do |form| %>
   <% if project.errors.any? %>
-    <div style="color: red">
+    <div style="color: red" , class="alert alert-danger">
       <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
       <ul>
@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name, style: "display: block", class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :Description, style: "display: block" %>
-    <%= form.text_area :Description %>
+  <div class="form-group">
+    <%= form.label :Description, style: "display: block", class: 'form-label' %>
+    <%= form.text_area :Description, class: 'form-control' %>
   </div>
-
-  <div>
-    <%= form.submit %>
+  <br>
+  <div class="form-group">
+    <%= form.submit"Submit", class: 'btn btn-primary' %>
   </div>
 <% end %>
