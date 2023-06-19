@@ -1,0 +1,7 @@
+
+<br><br>
+<div id="issues">
+  <% @issues.each do |issue| %>
+    <%= link_to issue.Title, project_issue_path(project_id: issue.project_id, id: issue.id), class:"nav-link" %>
+  <% end %>
+</div>

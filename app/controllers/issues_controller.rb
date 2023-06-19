@@ -16,6 +16,10 @@ class IssuesController < ApplicationController
 
   end
 
+  def myissues
+    @issues = Issue.where(assignee_id:current_user.id)
+  end
+
   private
     def issue_params
       params.require(:issue).permit(:Title, :Severity,:body,:assignee_id,:assigned_id).tap do |whitelisted|
