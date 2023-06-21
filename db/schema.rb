@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_27_030505) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_21_173114) do
   create_table "issues", force: :cascade do |t|
     t.string "Title"
     t.string "Severity"
@@ -23,6 +23,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_030505) do
     t.index ["assigned_id"], name: "index_issues_on_assigned_id"
     t.index ["assignee_id"], name: "index_issues_on_assignee_id"
     t.index ["project_id"], name: "index_issues_on_project_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "issue_id", null: false
+    t.integer "user_id", null: false
+    t.boolean "read"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["issue_id"], name: "index_notifications_on_issue_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -58,5 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_030505) do
   add_foreign_key "issues", "projects"
   add_foreign_key "issues", "users", column: "assigned_id"
   add_foreign_key "issues", "users", column: "assignee_id"
+  add_foreign_key "notifications", "issues"
+  add_foreign_key "notifications", "users"
   add_foreign_key "projects", "users", column: "project_lead_id"
 end
