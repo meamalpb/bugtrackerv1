@@ -13,7 +13,8 @@ class IssuesController < ApplicationController
     p "Working?"
     p params[:id]
     @issue = Issue.find(params[:id])
-
+    @comments = @issue.comments
+    @comment = @issue.comments.new
   end
 
   def myissues

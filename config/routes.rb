@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :projects do
-    resources :issues
+    resources :issues do
+      post '/comments', to: 'comments#create', as: 'comments'
+    end
    end
 
 

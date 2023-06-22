@@ -4,3 +4,25 @@
 <%=  @issue.Severity %>
 
 <%=  @issue.body %>
+
+
+
+<%= form_with(model: @comment , url: project_issue_comments_path(project_id: params[:project_id], issue_id: params[:id]) ) do |form| %>
+
+  <div>
+    <%= form.label :body, style: "display: block" %>
+    <%= form.text_field :body %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<div id="comments">
+  <% @comments.each do |comment| %>
+    <p>
+      <%= comment.body %>
+    </p>
+  <% end %>
+</div>
