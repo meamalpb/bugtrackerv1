@@ -7,7 +7,7 @@
   <div class="d-flex justify-content-between">
     <div class="d-flex">
       <span class="lead">
-        <% if current_user.id==@project.project_lead_id %>
+        <% if current_user.id == project.project_lead_id %>
         <%= link_to "Edit this project", edit_project_path(@project) ,class: "btn btn-primary btn-lg"%>
       <%end%>
       </span>
