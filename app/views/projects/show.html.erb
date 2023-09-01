@@ -1,8 +1,7 @@
 <p style="color: green"><%= notice %></p>
- <%= render partial: 'jumbotron', locals: { project: @project } %>
+ <%= render partial: 'jumbotron', locals: { project: @project, user: @user } %>
 <br><br>
 <div>
-  <%= button_to "Destroy this project", @project, method: :delete %>
 </div>
 <br>
 <%= link_to 'new issue', new_project_issue_path(@project),class: "btn btn-primary btn-sm" %>

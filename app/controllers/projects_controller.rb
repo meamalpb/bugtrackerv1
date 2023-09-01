@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1 or /projects/1.json
   def show
+    @user = User.find(@project.project_lead_id)
   end
 
   # GET /projects/new
