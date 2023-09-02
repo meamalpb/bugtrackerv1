@@ -39,15 +39,17 @@ class ProjectsController < ApplicationController
 
   # PATCH/PUT /projects/1 or /projects/1.json
   def update
-    respond_to do |format|
-      if @project.update(project_params)
-        format.html { redirect_to project_url(@project), notice: "Project was successfully updated." }
-        format.json { render :show, status: :ok, location: @project }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+    if (current_user.id==@project.project_lead_id || current_user.role=='admin') 
+        respond_to do |format|
+          if @project.update(project_params)
+            format.html { redirect_to project_url(@project), notice: "Project was successfully updated." }
+            format.json { render :show, status: :ok, location: @project }
+          else
+            format.html { render :edit, status: :unprocessable_entity }
+            format.json { render json: @project.errors, status: :unprocessable_entity }
+          end
+        end
       end
-    end
   end
 
   def project_user
@@ -63,11 +65,13 @@ class ProjectsController < ApplicationController
 
   # DELETE /projects/1 or /projects/1.json
   def destroy
-    @project.destroy_with_issues
+    if (current_user.id==@project.project_lead_id || current_user.role=='admin') 
+      @project.destroy_with_issues
 
-    respond_to do |format|
-      format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
+        format.json { head :no_content }
+      end
     end
   end
 

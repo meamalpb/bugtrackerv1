@@ -7,14 +7,14 @@
   <div class="d-flex justify-content-between">
     <div class="d-flex">
       <span class="lead">
-        <% if current_user.id == project.project_lead_id %>
+        <% if (current_user.id==@project.project_lead_id || current_user.role=='admin') %>
         <%= link_to "Edit this project", edit_project_path(@project) ,class: "btn btn-primary btn-lg"%>
       <%end%>
       </span>
     </div>
     <div>
       <span class="text-end">
-        <% if current_user.id==@project.project_lead_id %>
+        <% if (current_user.id==@project.project_lead_id || current_user.role=='admin') %>
         <%= button_to "Destroy this project", @project, method: :delete ,class: "btn btn-secondary btn-lg"  %>
       <%end%>
       </span>
