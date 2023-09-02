@@ -1,27 +1,29 @@
 <h1>New Issue</h1>
 
-<%= form_with(model: [ @project, @project.issues.build ],class: 'form-group')  do |f| %>
-<div class="form-group">
-  <%= f.label :Title, class: 'form-label' %>
-  <%= f.text_field :Title, class: 'form-control' %>
-</div>
-<br>
-<div class="form-group">
-  <%= f.label :Severity, class: 'form-label' %>
-  <%= f.select :Severity, ['low', 'medium', 'high'] , class: 'form-control'%>
+<%= form_with(model: [ @project, @project.issues.build ], class: 'form-group') do |f| %>
+  <div class="form-group">
+    <%= f.label :Title, class: 'form-label' %>
+    <%= f.text_field :Title, class: 'form-control' %>
   </div>
   <br>
-<div class="form-group">
-  <%= f.label :body, class: 'form-label' %>
-  <%= f.text_area :body, class: 'form-control' %>
-</div>
-<br>
-<div class="form-group">
-  <%= f.label :assigned_id, class: 'form-label' %>
-  <%= f.collection_select :assigned_id, @project.users, :id, :name , class: 'form-control'%>
-</div>
-<br>
-<div class="form-group">
-  <%= f.submit"Create", class: 'btn btn-primary' %>
+  <div class="form-group">
+    <%= f.label :Severity, class: 'form-label' %>
+    <%= f.select :Severity, ['low', 'medium', 'high'], {}, class: 'form-select form-control-lg' %>
+    <!-- You can use different Bootstrap classes for select sizing, e.g., form-select-sm for small -->
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.label :body, class: 'form-label' %>
+    <%= f.text_area :body, class: 'form-control' %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.label :assigned_id, class: 'form-label' %>
+    <%= f.collection_select :assigned_id, @project.users, :id, :name, {}, class: 'form-select' %>
+    <!-- You can add form-select-lg or form-select-sm for different select sizes -->
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.submit "Create", class: 'btn btn-primary' %>
   </div>
 <% end %>

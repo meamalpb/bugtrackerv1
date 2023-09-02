@@ -10,9 +10,9 @@ class IssuesController < ApplicationController
   end
 
   def show
-    p "Working?"
-    p params[:id]
     @issue = Issue.find(params[:id])
+    @assigned_id = User.find(@issue.assigned_id)
+    @assignee_id = User.find(@issue.assignee_id)
     @comments = @issue.comments
     @comment = @issue.comments.new
   end

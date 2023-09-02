@@ -1,28 +1,66 @@
-
-<%=  @issue.Title %>
-
-<%=  @issue.Severity %>
-
-<%=  @issue.body %>
-
-
-
-<%= form_with(model: @comment , url: project_issue_comments_path(project_id: params[:project_id], issue_id: params[:id]) ) do |form| %>
-
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_field :body %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title"><%= @issue.Title %></h1>
+          <h6 class="card-subtitle  text-muted"><%= @issue.Severity %></h6>
+          <p class="card-text"><%= @issue.body %></p>
+          
+          <!-- Styling for Assignee and Assigned -->
+          <div class="row">
+            <div class="col-md-6">
+              <strong>Assignee:</strong> <p>
+                <%= @assignee_id.name %>
+              </p>
+            </div>
+            <div class="col-md-6 text-md-end">
+              <strong>Assigned to:</strong> <p>
+                <%= @assigned_id.name %>
+              </p>
+            </div>
+          </div>
+          <!-- End of Styling for Assignee and Assigned -->
+          
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div>
-    <%= form.submit %>
+
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <%= form_with(model: @comment, url: project_issue_comments_path(project_id: params[:project_id], issue_id: params[:id])) do |form| %>
+        <div class="form-group">
+          <%= form.label :body %>
+          <%= form.text_field :body, class: 'form-control' %>
+        </div>
+        <br>
+        <div class="form-group">
+          <%= form.submit 'Submit', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>
 
-<div id="comments">
-  <% @comments.each do |comment| %>
-    <p>
-      <%= comment.body %>
-    </p>
-  <% end %>
+
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div id="comments">
+        <% @comments.each do |comment| %>
+          <div class="card mt-3">
+            <div class="card-body">
+              <p class="card-text"><%= comment.body %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
