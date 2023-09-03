@@ -73,3 +73,7 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+
+gem "rspec-rails", "~> 6.0"
+
+gem "factory_bot", "~> 6.3"
