@@ -13,7 +13,7 @@ class IssuesController < ApplicationController
     @issue = Issue.find(params[:id])
     @assigned_id = User.find(@issue.assigned_id)
     @assignee_id = User.find(@issue.assignee_id)
-    @comments = @issue.comments
+    @comments = @issue.comments.includes(:user)
     @comment = @issue.comments.new
   end
 
