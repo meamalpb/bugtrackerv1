@@ -21,9 +21,15 @@ class IssuesController < ApplicationController
     @issues = Issue.where(assignee_id:current_user.id)
   end
 
+  def update 
+    p params
+    @issue = Issue.find(params[:id])
+    @issue.update(issue_params)
+  end
+
   private
     def issue_params
-      params.require(:issue).permit(:Title, :Severity,:body,:assignee_id,:assigned_id).tap do |whitelisted|
+      params.require(:issue).permit(:Title, :Severity,:body,:assignee_id,:assigned_id,:status,:resolution).tap do |whitelisted|
         whitelisted[:assignee_id] = current_user.id
       end
     end

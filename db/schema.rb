@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_21_180138) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_14_080658) do
   create_table "comments", force: :cascade do |t|
     t.integer "issue_id", null: false
     t.integer "user_id", null: false
@@ -30,6 +30,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_180138) do
     t.datetime "updated_at", null: false
     t.integer "assignee_id", null: false
     t.integer "assigned_id", null: false
+    t.string "status"
+    t.text "resolution"
     t.index ["assigned_id"], name: "index_issues_on_assigned_id"
     t.index ["assignee_id"], name: "index_issues_on_assignee_id"
     t.index ["project_id"], name: "index_issues_on_project_id"
