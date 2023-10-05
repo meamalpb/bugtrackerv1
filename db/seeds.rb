@@ -12,7 +12,7 @@ end
     Project.create({name: Faker::Company.name, Description: Faker::Company.industry, project_lead_id: rand(1..10) })
 end
 
-40.times do 
+100.times do 
     project = Project.find(rand(1..10))
     user = User.find(rand(1..20))
     unless project.users.include? user
